@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react';
 import Button from './Button';
-import { useItemsContext } from '../contexts/hooks';
+import { useItemStore } from '../stores/itemStore';
 
 export default function AddItemForm() {
-  console.log('render from addForm');
-  const { handleAddItem: onAddItem } = useItemsContext();
+  const onAddItem = useItemStore((state) => state.addItem);
 
   const [text, setText] = useState('');
   const inputRef = useRef();
@@ -18,12 +17,7 @@ export default function AddItemForm() {
       return;
     }
 
-    const newItem = {
-      name: text,
-      packed: false,
-    };
-
-    onAddItem(newItem);
+    onAddItem(text);
     setText('');
   };
 
