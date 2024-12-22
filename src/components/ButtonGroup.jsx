@@ -1,11 +1,15 @@
 import Button from './Button';
+import { useItemsContext } from '../contexts/hooks';
 
-export default function ButtonGroup({
-  onAllRemove,
-  onResetToInitial,
-  onMarkAllCompleted,
-  onMarkAllIncompleted,
-}) {
+export default function ButtonGroup() {
+  console.log('render from button group');
+  const {
+    handleAllRemove: onAllRemove,
+    handleMarkAllCompleted: onMarkAllCompleted,
+    handleMarkAllIncompleted: onMarkAllIncompleted,
+    handleResetToInitial: onResetToInitial,
+  } = useItemsContext();
+
   const handleAllRemove = () => {
     onAllRemove();
   };

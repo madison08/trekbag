@@ -1,7 +1,12 @@
-export default function Counter({ resume }) {
+import { useItemsContext } from '../contexts/hooks';
+
+export default function Counter() {
+  const { resume } = useItemsContext();
+
   return (
     <p>
-      <b>{resume.completedItemCount}</b>/ {resume.itemCount} items packed
+      <b>{resume.completedItemCount ?? 0}</b>/ {resume.itemCount ?? 0} items
+      packed
     </p>
   );
 }
